@@ -101,16 +101,37 @@ def write_csv(rows: list[QuarterRow], path: Path) -> None:
             )
 
 
-def write_svg(rows: list[QuarterRow], path: Path) -> None:
-    """Plain SVG line chart of the largest residual in each quarter."""
+def series(
+    passes: Callable[[int], bool], horizon: int = 12, p: fip.Params = fip.MAINNET
+) -> list[tuple[int, Fraction]]:
+    """(epoch, residual) points over the horizon. Straight lines join them."""
+    base = fip.bootstrap_records(p)
+    writes = fip.gate_writes(passes, horizon, p)
+    end = p.quarter_start(horizon + 1)
+    epochs = {p.quarter_start(q) for q in range(1, horizon + 2)}
+    for w in writes:
+        if w.effective_epoch < end:
+            epochs.update({w.effective_epoch - 1, w.effective_epoch})
+    out = []
+    for e in sorted(epochs):
+        recs = base
+        for w in writes:
+            if w.effective_epoch <= e:
+                recs = apply_write(recs, w)
+        out.append((e, residual(recs, e)))
+    return out
+
+
+def write_svg(path: Path, horizon: int = 12, p: fip.Params = fip.MAINNET) -> None:
+    """Plain SVG line chart of the burn residual over time."""
     width, height, left, bottom, top, right = 720, 380, 56, 48, 28, 190
     plot_w, plot_h = width - left - right, height - top - bottom
-    quarters = sorted({r.quarter for r in rows})
     y_max = 45.0
+    span = p.quarter_start(horizon + 1)
     colors = ["#1f6feb", "#bf8700", "#cf222e"]
 
-    def x(q: int) -> float:
-        return left + (q - quarters[0]) / (quarters[-1] - quarters[0]) * plot_w
+    def x(epoch: int) -> float:
+        return left + epoch / span * plot_w
 
     def y(v: float) -> float:
         return top + plot_h - v / y_max * plot_h
@@ -128,16 +149,24 @@ def write_svg(rows: list[QuarterRow], path: Path) -> None:
         parts.append(
             f'<text x="{left - 8}" y="{y(v) + 4:.1f}" text-anchor="end" fill="#57606a">{v}%</text>'
         )
-    for q in quarters:
+    for q in range(1, horizon + 1):
+        x0, x1 = x(p.quarter_start(q)), x(p.quarter_start(q + 1))
         parts.append(
-            f'<text x="{x(q):.1f}" y="{height - bottom + 18}" text-anchor="middle" '
+            f'<line x1="{x0:.1f}" y1="{top + plot_h}" x2="{x0:.1f}" y2="{top + plot_h + 5}" '
+            f'stroke="#8c959f" stroke-width="1"/>'
+        )
+        parts.append(
+            f'<text x="{(x0 + x1) / 2:.1f}" y="{height - bottom + 20}" text-anchor="middle" '
             f'fill="#57606a">Q{q}</text>'
         )
-    for i, name in enumerate(SCENARIOS):
-        series = [r for r in rows if r.scenario == name]
-        pts = " ".join(f"{x(r.quarter):.1f},{y(float(r.residual_max) * 100):.1f}" for r in series)
+    # Draw the fastest scenario last so its sawtooth stays on top.
+    for i, name in reversed(list(enumerate(SCENARIOS))):
+        pts = " ".join(
+            f"{x(e):.1f},{y(float(r) * 100):.1f}" for e, r in series(SCENARIOS[name], horizon, p)
+        )
         parts.append(
-            f'<polyline points="{pts}" fill="none" stroke="{colors[i]}" stroke-width="2.5"/>'
+            f'<polyline points="{pts}" fill="none" stroke="{colors[i]}" stroke-width="2" '
+            f'stroke-linejoin="round"/>'
         )
         ly = top + 14 + i * 22
         parts.append(
@@ -147,7 +176,7 @@ def write_svg(rows: list[QuarterRow], path: Path) -> None:
         parts.append(f'<text x="{left + plot_w + 46}" y="{ly}" fill="#24292f">{name}</text>')
     parts.append(
         f'<text x="{left}" y="16" fill="#24292f" font-size="13">'
-        f"Burn residual by quarter (largest value in the quarter), share of block reward</text>"
+        f"Burn residual over the first {horizon} quarters, share of block reward</text>"
     )
     parts.append("</svg>")
     path.write_text("\n".join(parts) + "\n")
@@ -169,7 +198,7 @@ def main(argv: list[str]) -> int:
         out = Path(argv[1])
         out.mkdir(parents=True, exist_ok=True)
         write_csv(rows, out / "headroom.csv")
-        write_svg(rows, out / "headroom.svg")
+        write_svg(out / "headroom.svg")
         print(f"Wrote {out / 'headroom.csv'} and {out / 'headroom.svg'}")
     return 0
 
