@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="720" height="380" fill="white"/>
+<line x1="56" y1="332.0" x2="530" y2="332.0" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="336.0" text-anchor="end" fill="#57606a">0%</text>
+<line x1="56" y1="298.2" x2="530" y2="298.2" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="302.2" text-anchor="end" fill="#57606a">5%</text>
+<line x1="56" y1="264.4" x2="530" y2="264.4" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="268.4" text-anchor="end" fill="#57606a">10%</text>
+<line x1="56" y1="230.7" x2="530" y2="230.7" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="234.7" text-anchor="end" fill="#57606a">15%</text>
+<line x1="56" y1="196.9" x2="530" y2="196.9" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="200.9" text-anchor="end" fill="#57606a">20%</text>
+<line x1="56" y1="163.1" x2="530" y2="163.1" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="167.1" text-anchor="end" fill="#57606a">25%</text>
+<line x1="56" y1="129.3" x2="530" y2="129.3" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="133.3" text-anchor="end" fill="#57606a">30%</text>
+<line x1="56" y1="95.6" x2="530" y2="95.6" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="99.6" text-anchor="end" fill="#57606a">35%</text>
+<line x1="56" y1="61.8" x2="530" y2="61.8" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="65.8" text-anchor="end" fill="#57606a">40%</text>
+<line x1="56" y1="28.0" x2="530" y2="28.0" stroke="#d0d7de" stroke-width="1"/>
+<text x="48" y="32.0" text-anchor="end" fill="#57606a">45%</text>
+<text x="56.0" y="350" text-anchor="middle" fill="#57606a">Q1</text>
+<text x="99.1" y="350" text-anchor="middle" fill="#57606a">Q2</text>
+<text x="142.2" y="350" text-anchor="middle" fill="#57606a">Q3</text>
+<text x="185.3" y="350" text-anchor="middle" fill="#57606a">Q4</text>
+<text x="228.4" y="350" text-anchor="middle" fill="#57606a">Q5</text>
+<text x="271.5" y="350" text-anchor="middle" fill="#57606a">Q6</text>
+<text x="314.5" y="350" text-anchor="middle" fill="#57606a">Q7</text>
+<text x="357.6" y="350" text-anchor="middle" fill="#57606a">Q8</text>
+<text x="400.7" y="350" text-anchor="middle" fill="#57606a">Q9</text>
+<text x="443.8" y="350" text-anchor="middle" fill="#57606a">Q10</text>
+<text x="486.9" y="350" text-anchor="middle" fill="#57606a">Q11</text>
+<text x="530.0" y="350" text-anchor="middle" fill="#57606a">Q12</text>
+<polyline points="56.0,332.0 99.1,298.2 142.2,291.9 185.3,291.9 228.4,291.9 271.5,291.9 314.5,291.9 357.6,291.9 400.7,291.9 443.8,298.2 486.9,332.0 530.0,332.0" fill="none" stroke="#1f6feb" stroke-width="2.5"/>
+<line x1="546" y1="38" x2="570" y2="38" stroke="#1f6feb" stroke-width="2.5"/>
+<text x="576" y="42" fill="#24292f">every gate passes</text>
+<polyline points="56.0,332.0 99.1,298.2 142.2,291.9 185.3,264.4 228.4,258.2 271.5,230.7 314.5,224.4 357.6,196.9 400.7,190.6 443.8,196.9 486.9,196.9 530.0,230.7" fill="none" stroke="#bf8700" stroke-width="2.5"/>
+<line x1="546" y1="60" x2="570" y2="60" stroke="#bf8700" stroke-width="2.5"/>
+<text x="576" y="64" fill="#24292f">every other gate passes</text>
+<polyline points="56.0,332.0 99.1,298.2 142.2,264.4 185.3,230.7 228.4,196.9 271.5,163.1 314.5,129.3 357.6,95.6 400.7,61.8 443.8,61.8 486.9,61.8 530.0,61.8" fill="none" stroke="#cf222e" stroke-width="2.5"/>
+<line x1="546" y1="82" x2="570" y2="82" stroke="#cf222e" stroke-width="2.5"/>
+<text x="576" y="86" fill="#24292f">no gate passes</text>
+<text x="56" y="16" fill="#24292f" font-size="13">Burn residual by quarter (largest value in the quarter), share of block reward</text>
+</svg>

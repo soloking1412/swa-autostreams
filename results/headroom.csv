@@ -1,0 +1,37 @@
+scenario,quarter,w1_start_pct,w2_end_pct,residual_min_pct,residual_max_pct,usable_min_pct
+every gate passes,1,95.0,10.0,0.0,0.0,0.0
+every gate passes,2,90.0,10.0,0.0,5.0,0.0
+every gate passes,3,85.0,15.0,0.9,5.9,0.0
+every gate passes,4,80.0,20.0,0.9,5.9,0.0
+every gate passes,5,75.0,25.0,0.9,5.9,0.0
+every gate passes,6,70.0,30.0,0.9,5.9,0.0
+every gate passes,7,65.0,35.0,0.9,5.9,0.0
+every gate passes,8,60.0,40.0,0.9,5.9,0.0
+every gate passes,9,55.0,45.0,0.9,5.9,0.0
+every gate passes,10,50.0,50.0,0.0,5.0,0.0
+every gate passes,11,50.0,50.0,0.0,0.0,0.0
+every gate passes,12,50.0,50.0,0.0,0.0,0.0
+every other gate passes,1,95.0,10.0,0.0,0.0,0.0
+every other gate passes,2,90.0,10.0,0.0,5.0,0.0
+every other gate passes,3,85.0,15.0,0.9,5.9,0.0
+every other gate passes,4,80.0,15.0,5.0,10.0,0.0
+every other gate passes,5,75.0,20.0,5.9,10.9,0.9
+every other gate passes,6,70.0,20.0,10.0,15.0,5.0
+every other gate passes,7,65.0,25.0,10.9,15.9,5.9
+every other gate passes,8,60.0,25.0,15.0,20.0,10.0
+every other gate passes,9,55.0,30.0,15.9,20.9,10.9
+every other gate passes,10,50.0,30.0,20.0,20.0,15.0
+every other gate passes,11,50.0,35.0,15.0,20.0,10.0
+every other gate passes,12,50.0,35.0,15.0,15.0,10.0
+no gate passes,1,95.0,10.0,0.0,0.0,0.0
+no gate passes,2,90.0,10.0,0.0,5.0,0.0
+no gate passes,3,85.0,10.0,5.0,10.0,0.0
+no gate passes,4,80.0,10.0,10.0,15.0,5.0
+no gate passes,5,75.0,10.0,15.0,20.0,10.0
+no gate passes,6,70.0,10.0,20.0,25.0,15.0
+no gate passes,7,65.0,10.0,25.0,30.0,20.0
+no gate passes,8,60.0,10.0,30.0,35.0,25.0
+no gate passes,9,55.0,10.0,35.0,40.0,30.0
+no gate passes,10,50.0,10.0,40.0,40.0,35.0
+no gate passes,11,50.0,10.0,40.0,40.0,35.0
+no gate passes,12,50.0,10.0,40.0,40.0,35.0
