@@ -1,0 +1,15 @@
+[project]
+name = "autostreams"
+version = "0.1.0"
+description = "Models of the FIP-0118 reward split, for a study of automatic streams in the SWA"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools]
+packages = ["autostreams"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
