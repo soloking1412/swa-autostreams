@@ -198,8 +198,8 @@ def main(argv: list[str]) -> int:
         out = Path(argv[1])
         out.mkdir(parents=True, exist_ok=True)
         write_csv(rows, out / "headroom.csv")
-        write_svg(out / "headroom.svg")
-        print(f"Wrote {out / 'headroom.csv'} and {out / 'headroom.svg'}")
+        write_svg(out / "residual.svg")
+        print(f"Wrote {out / 'headroom.csv'} and {out / 'residual.svg'}")
     return 0
 
 

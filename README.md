@@ -10,7 +10,7 @@ This repo holds the groundwork: a model of the rules f02 enforces, a first analy
 
 New streams can only take weight from the burn share, `w0 = 1 - w1 - w2`. How big that share is depends on how the service stream's volume gate goes.
 
-![Burn residual by quarter](results/headroom.svg)
+![Burn residual by quarter](results/residual.svg)
 
 | Scenario | Residual in Q4 | Q8 | Q12 |
 |---|---|---|---|
